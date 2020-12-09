@@ -59,18 +59,24 @@
 
     ipcRenderer.send('app_version');
     ipcRenderer.on('app_version', (event, arg) => {
-        ipcRenderer.removeAllListeners('app_version');
+        console.log('version:',arg.version)
+        //ipcRenderer.removeAllListeners('app_version');
         version.innerHTML = 'Current version: ' + arg.version;
     });
 
-    ipcRenderer.on('update_available', () => {
-        ipcRenderer.removeAllListeners('update_available');
+    ipcRenderer.on('update_available', (e) => {
+        //ipcRenderer.removeAllListeners('update_available');
+        console.log('update_available:',e);
         message.innerHTML = 'A new update is available. Downloading now...';
         notification.classList.remove('hidden');
     });
 
+    ipcRenderer.on('checkNotify', (e) => {
+        console.log('checkNotify:',e)
+    });
+
     ipcRenderer.on('update_downloaded', () => {
-        ipcRenderer.removeAllListeners('update_downloaded');
+        //ipcRenderer.removeAllListeners('update_downloaded');
         restartButton.innerHTML = 'Update Downloaded. It will be installed on restart. Restart now?';
         notification.classList.remove('hidden');
     });
