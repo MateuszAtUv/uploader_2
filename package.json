@@ -1,6 +1,6 @@
 {
   "name": "electron_git_test",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -17,10 +17,17 @@
     "electron-builder": "^22.9.1"
   },
   "dependencies": {
-    "electron-updater": "^4.3.5"
+    "dotenv": "^8.2.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-updater": "^4.3.5",
+    "update-electron-app": "^2.0.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/MateuszAtUv/uploader_2.git"
+  },
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   }
 }
