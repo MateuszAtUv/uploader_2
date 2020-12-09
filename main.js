@@ -10,20 +10,20 @@ async function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true
-            
+
         }
     })
 
     win.loadFile('index.html');
 
-    win.once('ready-to-show', () => {     
-        console.log('checkin for updates')  
-       autoUpdater.checkForUpdatesAndNotify();
+    win.once('ready-to-show', () => {
+        console.log('checkin for updates')
+        autoUpdater.checkForUpdatesAndNotify();
     });
-    
-   
-    
-    
+
+
+
+
 }
 
 app.whenReady().then(createWindow)
@@ -53,8 +53,6 @@ autoUpdater.on('update-downloaded', () => {
     win.webContents.send('update_downloaded');
 });
 
-
-
-ipcMain.on('restart_app', ()=>{
+ipcMain.on('restart_app', () => {
     autoUpdater.quitAndInstall();
 })
